@@ -7,7 +7,7 @@
   width: 80%;
   height: 110px;
   background-color: rgba(0, 255, 25, .5);
-  font-size: 68px;
+  font-size: calc(68px - 2vw);
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
   width: 80%;
   height: 110px;
   background-color: rgba(255, 0, 0, .5);
-  font-size: 68px;
+  font-size: calc(68px - 2vw);;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
   width: 80%;
   height: 110px;
   background-color: rgba(0, 41, 255, .5);
-  font-size: 68px;
+  font-size: calc(68px - 2vw);;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -45,6 +45,7 @@
   text-decoration: none
 }
 .footer {
+  display: flex;
   width: 50px;
   height: 50px
 }
@@ -53,12 +54,12 @@ footer {
   justify-content: space-around;
   width: 100%;
   border-top: 1px solid #000;
-  padding: 10px;
-  padding-bottom: 5px;
+  padding-top:1% ;
   margin-top: 15px;
   position: absolute;
   bottom: 0;
   left: 0
+
 }
 .rozd {
   background-color: #fff50080;
@@ -93,7 +94,7 @@ footer {
 }
 .table {
   border: #3e7431 3px solid;
-  height: 250px;
+  height: 200px;
   border-radius: 10px;
   margin-left: 80px;
   margin-right: 80px;
@@ -109,16 +110,19 @@ footer {
   margin: 0
 }
 .text {
+  display: flex;
   font-size: 36px;
   margin: 0
 }
 .kinds {
+  display: flex;
   background-color: #c4c4c4;
   height: 40px;
   width: 350px;
   border: 0
 }
 .input {
+  display: flex;
   width: 150px;
   height: 40px;
   border: 0;
@@ -137,21 +141,25 @@ footer {
   margin-top: 10px
 }
 .back {
+  display: flex;
   color: #4d7bd6;
   text-decoration: none;
   font-size: 24px
 }
 .text-add {
+  display: flex;
   font-size: 24px;
   margin: 0
 }
 .input-add {
+  display: flex;
   width: 80px;
   height: 35px;
   border: 0;
   background-color: #c4c4c4
 }
 .kinds-add {
+  display: flex;
   background-color: #c4c4c4;
   height: 40px;
   width: 250px;
@@ -164,8 +172,10 @@ footer {
   margin: 0
 }
 .storage-table{
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  height: 300px;
+  height: 50%;
   width: 90%;
   border: black 4px solid;
   margin: 5%;
@@ -174,41 +184,22 @@ footer {
   box-sizing: border-box;
 }
 tr{
+  display: flex;
   height: 40px;
 }
 td, th{
+  display: flex;
   border: 1px solid #000000;
   border-spacing: 0;  
 }
 table{
+  display: flex;
   border-collapse: collapse;
 }
-.buttons{
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  margin-top: 45%;
+.icon{
+height: 25px;
+margin-top: 3px ;
 }
-.button-del{
-  background-color:#C93030;
-  font-size: 30px;
-  font-weight: 700;
-  border: 0;
-  padding: 1%;
-}
-.button-change{
-    background-color:#8799F9;
-    font-size: 30px;
-    font-weight: 700;
-    border: 0;
-    padding: 1%;
-  }
-  .button-rename{
-    background-color:#FFF500A3;
-    font-size: 30px;
-    font-weight: 700;
-    border: 0;
-    padding: 1%;
-  }
+
 
 

@@ -1,8 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../App.css";
 
 class Opt extends React.Component {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    axios
+      .get("https://storageapp0.herokuapp.com/storage")
+      .then((response) => this.setState({ data: response.data.storage }));
+  }
+
   render() {
     return (
       <div class="rozd-page">
@@ -10,18 +21,20 @@ class Opt extends React.Component {
           {" "}
           &lt; назад
         </Link>
-        <p class="title">Роздіб</p>
+        <p class="title">Опт</p>
         <div class="table">
           <div class="meters">
             <p class="text">К-ть пачок</p>
-            <input class="input"></input>
+            <input type="number" class="input"></input>
           </div>
           <div class="category">
             <p class="text">Тканина</p>
             <select class="kinds">
-              <option>Кружева</option>
-              <option>Однотонна </option>
-              <option>Інше</option>
+              {this.state.data.map((data, idx) => (
+                
+                  <option>{data.name}</option>
+                
+              ))}
             </select>
           </div>
         </div>
