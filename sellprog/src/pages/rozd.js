@@ -4,24 +4,34 @@ import axios from "axios";
 import "../App.css";
 
 class Rozd extends React.Component {
-  state = {
-    data: [],
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      data: [],
+      selledMeters: "",
+    };
+  }
+  sellMeters(){}
   componentDidMount() {
     axios
       .get("https://storageapp0.herokuapp.com/storage")
       .then((response) => this.setState({ data: response.data.storage }));
   }
 
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
+    const { selledMeters } = this.state;
     return (
       <div class="rozd-page">
         <Link class="back" to="/sell">
           {" "}
           &lt; назад
         </Link>
-        <p class="title">Опт</p>
+        <p class="title">Роздріб</p>
         <div class="table">
           <div class="meters">
             <p class="text">
@@ -30,7 +40,13 @@ class Rozd extends React.Component {
                 <small>2</small>
               </sup>
             </p>
-            <input type="number" class="input"></input>
+            <input
+              type="number"
+              name="selledMeters"
+              value={selledMeters}
+              class="input"
+              onChange={this.changeHandler}
+            ></input>
           </div>
           <div class="category">
             <p class="text">Тканина</p>
@@ -41,7 +57,7 @@ class Rozd extends React.Component {
             </select>
           </div>
         </div>
-        <button class="save">Зберегти</button>
+        <button class="save" onClick={() => this.sellMeters()}>Продати</button>
       </div>
     );
   }

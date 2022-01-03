@@ -38,7 +38,7 @@ class Opt extends React.Component {
             </select>
           </div>
         </div>
-        <button class="save">Зберегти</button>
+        <button class="save">Продати</button>
       </div>
     );
   }

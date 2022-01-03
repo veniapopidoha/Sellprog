@@ -6,10 +6,11 @@ import Sell from './pages/Sell'
 import App from './App'
 import reportWebVitals from './reportWebVitals';
 import { Router } from 'react-router-dom';
+import Test from './pages/test'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

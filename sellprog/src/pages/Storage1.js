@@ -5,6 +5,9 @@ import deleted from "../img/trash.png";
 import rename from "../img/edit.png";
 import change from "../img/cubes.png";
 import "../App.css";
+import tick from "../img/tick.png";
+import close from "../img/close.png";
+
 import { useState } from "react";
 
 class Storage1 extends React.Component {
@@ -12,6 +15,11 @@ class Storage1 extends React.Component {
     data: [],
     name: "",
     editMode: false,
+    test: "",
+  };
+
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   getProducts() {
@@ -39,8 +47,14 @@ class Storage1 extends React.Component {
         });
     }
   }
+  successElement() {}
+  closeRename() {
+    this.state.editMode = false;
+    this.getProducts();
+  }
 
   render() {
+    const { test } = this.state;
     return (
       <div class="rozd-page">
         <Link class="back" to="/storage">
@@ -53,7 +67,7 @@ class Storage1 extends React.Component {
             <thead>
               <tr>
                 <th width="50px">&#8470;</th>
-                <th width="320px">Назва</th>
+                <th width="360px">Назва</th>
                 <th width="100px">К-ть пачок</th>
                 <th width="80px">
                   м
@@ -61,7 +75,7 @@ class Storage1 extends React.Component {
                     <small>2</small>
                   </sup>
                 </th>
-                <th width="125px">Кнопки</th>
+                <th width="85px">Кнопки</th>
               </tr>
             </thead>
 
@@ -72,30 +86,50 @@ class Storage1 extends React.Component {
                     <editableTr>
                       <tr key={idx}>
                         <td width="50px">{data._id}</td>
-                        <td width="320px">
-                          <input type="text" placeholder={data.name} ></input>
+                        <td width="360px">
+                          <input
+                            class="input-name"
+                            type="text"
+                            name="name"
+                            value={data.name}
+                            onChange={this.changeHandler}
+                          ></input>
                         </td>
-                        <td width="100px">{data.pack}</td>
-                        <td width="80px">{data.meters}</td>
-                        <td width="125px">
+                        <td width="100px">
+                          <input
+                            class="input-pack"
+                            type="text"
+                            name="pack"
+                            value={data.pack}
+                            onChange={this.changeHandler}
+                          ></input>
+                        </td>
+
+                        <td width="80px">
+                          <input
+                            class="input-meters"
+                            type="text"
+                            name="meters"
+                            value={data.meters}
+                            onChange={this.changeHandler}
+                          ></input>
+                        </td>
+                        <td width="85px">
                           <button>
                             <img
-                              onClick={() => this.deleteElement(data._id)}
+                              onClick={() => this.successElement(data._id)}
                               class="icon"
-                              src={deleted}
-                              alt="delete"
+                              src={tick}
+                              alt="success"
                             />
                           </button>
                           <button>
                             <img
-                              onClick={() => this.renameProduct()}
+                              onClick={() => this.closeRename()}
                               class="icon"
-                              src={rename}
-                              alt="rename"
+                              src={close}
+                              alt="close"
                             />
-                          </button>
-                          <button>
-                            <img class="icon" src={change} alt="change count" />
                           </button>
                         </td>
                       </tr>
@@ -103,10 +137,10 @@ class Storage1 extends React.Component {
                   ) : (
                     <tr key={idx}>
                       <td width="50px">{data._id}</td>
-                      <td width="320px">{data.name}</td>
+                      <td width="360px">{data.name}</td>
                       <td width="100px">{data.pack}</td>
                       <td width="80px">{data.meters}</td>
-                      <td width="125px">
+                      <td width="85px">
                         <button>
                           <img
                             onClick={() => this.deleteElement(data._id)}
@@ -122,9 +156,6 @@ class Storage1 extends React.Component {
                             src={rename}
                             alt="rename"
                           />
-                        </button>
-                        <button>
-                          <img class="icon" src={change} alt="change count" />
                         </button>
                       </td>
                     </tr>

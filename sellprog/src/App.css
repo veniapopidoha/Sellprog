@@ -200,6 +200,19 @@ table{
 height: 25px;
 margin-top: 3px ;
 }
-
-
+input{
+  border: 0px;
+}
+.input-pack{
+  resize: both;
+  width: 95px;
+}
+.input-meters{
+  resize: both;
+  width: 70px;
+}
+.input-name{
+  resize: both;
+  width: 350px;
+}
 
