@@ -19,8 +19,19 @@ class Storage1 extends React.Component {
   };
 
   changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    const id = e.currentTarget.getAttribute("product-id");
+    console.log(this.state)
+    const data = this.state.data.map(p => {
+      if (p._id == id) {
+        return {...p, [e.target.name]: e.target.value };
+      } else {return p} 
+      
+    });
+    this.setState({ data });
+    console.log(data)
+    
   };
+
 
   getProducts() {
     axios
@@ -83,7 +94,7 @@ class Storage1 extends React.Component {
               <tbody>
                 {this.state.data.map((data, idx) =>
                   this.state.editMode ? (
-                    <editableTr>
+                    
                       <tr key={idx}>
                         <td width="50px">{data._id}</td>
                         <td width="360px">
@@ -92,6 +103,7 @@ class Storage1 extends React.Component {
                             type="text"
                             name="name"
                             value={data.name}
+                            product-id={data._id}
                             onChange={this.changeHandler}
                           ></input>
                         </td>
@@ -100,6 +112,7 @@ class Storage1 extends React.Component {
                             class="input-pack"
                             type="text"
                             name="pack"
+                            product-id={data._id}
                             value={data.pack}
                             onChange={this.changeHandler}
                           ></input>
@@ -110,6 +123,7 @@ class Storage1 extends React.Component {
                             class="input-meters"
                             type="text"
                             name="meters"
+                            product-id={data._id}
                             value={data.meters}
                             onChange={this.changeHandler}
                           ></input>
@@ -133,7 +147,6 @@ class Storage1 extends React.Component {
                           </button>
                         </td>
                       </tr>
-                    </editableTr>
                   ) : (
                     <tr key={idx}>
                       <td width="50px">{data._id}</td>
